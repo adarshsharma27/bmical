@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>BMI Calculator</title>
+</head>
+<style>
+body{
+      background-color:#f7f8fa;   
+    }
+    .main-continer{
+        background-image: url(problemsolving.png);
+        background-position-x: -23px;
+        background-position-y: -68px;
+        background-size: cover;
+        margin-top: -21px;
+        height:99vh;
+}
+    h3{
+        color: #92949aa3;
+        font-size: 20px;
+        word-spacing: 5px;
+        text-align: center;
+        letter-spacing: 3px;
+        padding-top: 20px;
+
+    }
+    input{
+        width: 200px;
+        height: 45px;
+        text-align: center;
+        font-size: 17px;
+        border-radius: 5px;
+    border: 1px solid #61c98a;
+    box-shadow: 1px 1px 3px 0px #61c98a;
+    color:#b7bdca;
+}
+button{
+    width: 143px;
+    height: 45px;
+    margin-left: 25px;
+    background-color: #27c97b;
+    border:1px solid #27c97b;
+    color:#fefffa;
+    border-radius:5px;
+}
+
+    .convertor {
+    width: 210px;
+    height: 328px;
+    margin: 10px auto;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+
+}
+    ::placeholder{
+        color:#d6dbe6;
+    }
+    .fa-thumbs-up{
+        color:lightgray;
+    }
+    .fa-thumbs-up:hover{
+   color: #27c97b;
+   cursor: pointer;
+  
+ }
+</style>
+<body>
+    <div class="main-continer">
+            <h3>BMI Calculator</h3>
+            <div class="convertor">
+         <input type="text" id="first" placeholder="Enter Weight in Kg"> 
+         <input type="text" id="second" placeholder="Enter Height in Feet"> 
+         <button onclick="convert()" >Calculate</button>
+         <input type="text" id="third" readonly>
+         
+    </div>
+            </div>
+            <div class="like-dislike" style="text-align:center">
+                <i class="fa fa-thumbs-up fa-5x" id="togl" onclick="change()"></i>
+             </div>  
+    <script>
+         
+
+       const convert=()=>{
+                   
+                   
+           let weight=document.getElementById("first").value
+           let height=document.getElementById("second").value
+           height = height*12;/* to convert it into inch*/
+           height = height*0.025;/* to convert it into meter*/
+           let bmi= (weight)/(height*height);
+             var aqubmi=Math.round(bmi); /* and floor is used to remove value after decimal  and round for roundoff*/ 
+           document.getElementById("third").value= aqubmi;
+                
+        if(aqubmi<18.5)  
+        alert("Under Weight");
+
+        else if(aqubmi<24.9  && aqubmi>18.5)  
+        alert("Normal Weight");  
+
+        else if(aqubmi<29.9 && aqubmi>25)  
+        alert("over Weight");  
+
+        else
+         alert("obse/obesity");
+      }
+      const change=()=>{
+                                       var tog = document.getElementById("togl");
+                                       tog.classList.toggle("fa-thumbs-down");
+                                       
+                                 }
+
+
+
+     </script>
+
+</body>
+</html>
